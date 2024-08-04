@@ -1,0 +1,58 @@
+<div class="container">
+    <h1>Altera Usuário</h1>
+  
+    
+        
+    <form [formGroup]="form" (ngSubmit)="submit()" #ngForm="ngForm">
+  
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input 
+                formControlName="nome"
+                id="nome" 
+                type="text" 
+                class="form-control">
+            <div *ngIf="ngForm.submitted && f['nome'].errors && f['nome'].errors['required']" class="alert alert-danger">
+                <div>Nome é obrigatório.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input 
+                formControlName="email"
+                id="email" 
+                type="text" 
+                class="form-control">
+            <div *ngIf="ngForm.submitted && f['email'].errors && f['email'].errors['required']" class="alert alert-danger">
+                <div>E-mail é obrigatório.</div>
+            </div>
+            <div *ngIf="ngForm.submitted && f['email'].errors && f['email'].errors['email']" class="alert alert-danger">
+                <div>E-mail inválido.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input 
+                formControlName="telefone"
+                mask="(00) 00000-0000"
+                id="telefone" 
+                type="text" 
+                class="form-control">
+            <div *ngIf="ngForm.submitted && f['telefone'].errors && f['telefone'].errors['required']" class="alert alert-danger">
+                <div>Telefone é obrigatório.</div>
+            </div>
+            <div *ngIf="ngForm.submitted && f['telefone'].errors && f['telefone'].errors['mask']" class="alert alert-danger">
+                <div>Telefone inválido (00) 00000-0000.</div>
+            </div>
+        </div>
+
+
+        <div style="margin-top: 10px;">
+            <button class="btn btn-primary" type="submit">Salvar</button>
+            <a href="#" routerLink="" class="btn btn-primary" style="margin-left: 10px;">Voltar</a>
+        </div>
+        
+    </form>
+</div>

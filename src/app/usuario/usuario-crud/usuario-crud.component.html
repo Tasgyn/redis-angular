@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Usuários</h1>
+  
+    <a href="#" routerLink="/usuario/new" class="btn btn-success">Novo usuário</a>
+    
+    <table class="table table-bordered" style="margin-top: 20px;">
+      <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Telefone</th>
+        <th width="220px">Ação</th>
+      </tr>
+      <tr *ngFor="let usuario of usuarios">
+        <td>{{ usuario.nome  }}</td>
+        <td>{{ usuario.email}}</td>
+        <td>{{ usuario.telefone | mask: '(00) 00000-0000'}}</td>
+        <td>
+            <div>
+                <a href="#" [routerLink]="['/usuario/edit/', usuario.id]" class="btn btn-primary">Editar</a>
+                <button style="margin-left: 5px;" type="button" (click)="deleteUsuario(usuario.id)" class="btn btn-danger">Deletar</button>
+            </div>
+          
+
+          
+        </td>
+      </tr>
+    </table>
+ </div>
